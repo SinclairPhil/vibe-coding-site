@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>VIBE Practice Arena</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
@@ -13,19 +13,65 @@
       color: #ffffff;
       margin: 0;
       padding: 0;
+      cursor: none;
     }
 
-    header {
+    .custom-cursor {
+      position: fixed;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,255,255,0.8) 0%, rgba(0,191,255,0.2) 60%, rgba(0,0,0,0) 100%);
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: transform 0.1s ease-out;
+    }
+
+    .sparkle-text {
+      position: fixed;
+      font-size: 14px;
+      font-weight: bold;
+      font-family: 'Inter', sans-serif;
+      color: #00ffff;
+      pointer-events: none;
+      z-index: 9998;
+      animation: textFade 1s ease-out forwards;
+    }
+
+    @keyframes textFade {
+      0% { opacity: 1; transform: translateY(0); }
+      100% { opacity: 0; transform: translateY(-10px); }
+    }
+
+    .hero-header {
       background: linear-gradient(135deg, #0a0f4b, #1f8df1);
-      color: white;
-      padding: 60px 20px;
+      padding: 100px 20px 80px;
       text-align: center;
+      position: relative;
+      overflow: hidden;
     }
 
-    header h1 {
-      font-size: 3em;
+    .hero-header h1 {
+      font-size: 3.5rem;
       font-weight: 800;
+      background: linear-gradient(90deg, #00ffe1, #66b3ff, #00ffe1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: floatUpDown 4s ease-in-out infinite;
       margin: 0;
+    }
+
+    .hero-header p {
+      font-size: 1.2rem;
+      color: #e0f7ff;
+      margin-top: 20px;
+      animation: floatUpDown 4s ease-in-out infinite;
+    }
+
+    @keyframes floatUpDown {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
     }
 
     nav {
@@ -65,6 +111,12 @@
       border-radius: 10px;
       margin-bottom: 40px;
       box-shadow: 0 0 10px rgba(0, 191, 255, 0.15);
+      transition: all 0.3s ease;
+    }
+
+    .problem-box:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 20px rgb(0, 191, 255);
     }
 
     .problem-box h3 {
@@ -87,10 +139,12 @@
   </style>
 </head>
 <body>
-  <header>
+  <div class="custom-cursor" id="cursor"></div>
+
+  <div class="hero-header">
     <h1>VIBE Practice Arena</h1>
     <p>Apply VIBE principles while solving real-world coding challenges with AI support — but not AI autopilot.</p>
-  </header>
+  </div>
 
   <nav>
     <a href="index.html">Home</a>
@@ -149,5 +203,26 @@ console.log(searchWord(["apple", "banana", "cherry"], "banana"));</code></pre>
 
     <p class="vibe-requirements">💡 Tip: Don't ask AI to do it all. Ask it to nudge you toward better structure, spot bugs, or inspire ideas — VIBE coding is collaboration, not delegation.</p>
   </section>
+
+  <script>
+    const cursor = document.getElementById('cursor');
+    let lastMoveTime = 0;
+    const delayBetweenWords = 200;
+    document.addEventListener('mousemove', e => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+      const now = Date.now();
+      if (now - lastMoveTime >= delayBetweenWords) {
+        lastMoveTime = now;
+        const word = document.createElement('div');
+        word.classList.add('sparkle-text');
+        word.innerText = 'VIBE';
+        word.style.left = `${e.clientX}px`;
+        word.style.top = `${e.clientY}px`;
+        document.body.appendChild(word);
+        setTimeout(() => word.remove(), 1000);
+      }
+    });
+  </script>
 </body>
 </html>

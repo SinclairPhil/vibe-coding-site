@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>VIBE Coding - Home</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
@@ -13,10 +13,39 @@
       color: #f1f1f1;
       margin: 0;
       padding: 0;
+      cursor: none;
+    }
+
+    .custom-cursor {
+      position: fixed;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,255,255,0.7) 0%, rgba(0,191,255,0.2) 60%, rgba(0,0,0,0) 100%);
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: transform 0.1s ease-out;
+    }
+
+    .sparkle-text {
+      position: fixed;
+      font-size: 14px;
+      font-weight: bold;
+      font-family: 'Inter', sans-serif;
+      color: #00ffff;
+      pointer-events: none;
+      z-index: 9998;
+      animation: textFade 1s ease-out forwards;
+    }
+
+    @keyframes textFade {
+      0% { opacity: 1; transform: translateY(0); }
+      100% { opacity: 0; transform: translateY(-10px); }
     }
 
     header {
-      background: linear-gradient(135deg,  #0a0f4b, #1f8df1);
+      background: linear-gradient(135deg, #0a0f4b, #1f8df1);
       color: white;
       padding: 60px 20px;
       text-align: center;
@@ -79,6 +108,14 @@
       padding: 15px 20px;
       border-left: 5px solid #0077ff;
       border-radius: 5px;
+      transition: all 0.4s ease;
+      transform-origin: left;
+    }
+
+    ul li:hover {
+      background: #003366;
+      box-shadow: 0 0 15px #00bfff;
+      transform: scale(1.05);
     }
 
     h3 {
@@ -95,6 +132,12 @@
       padding: 20px;
       margin-top: 40px;
       border-radius: 5px;
+      transition: all 0.3s ease;
+    }
+
+    .security-box:hover {
+      box-shadow: 0 0 15px #ff5f5f;
+      transform: scale(1.03);
     }
 
     .security-box h3 {
@@ -103,46 +146,110 @@
   </style>
 </head>
 <body>
-
-<header>
-  <h1>Welcome to the VIBE Coding Movement</h1>
-  <p>Not just a productivity hack — a mindset shift for peak coding flow.</p>
-</header>
-
-<nav>
-  <a href="index.html">Home</a>
-  <a href="learn.html">Learn</a>
-  <a href="practice.html">Practice</a>
-  <a href="evaluation.html">Evaluation</a>
-</nav>
-
-<section>
-  <h2 class="section-title">Why Learn VIBE Coding?</h2>
-  <p>Studies show that coding with VIBE principles increases agency, enhances decision-making, and reduces mental fatigue. It's not just about writing code — it's about building the right mental conditions to code effectively.</p>
-
-  <p>Agentic AI and cognitive-aligned programming have shown developers are more likely to reach flow states, solve complex problems faster, and sustain motivation through structured mental habits. VIBE Coding isn’t luxury—it’s leverage.</p>
-
-  <h3>What is VIBE?</h3>
-  <ul>
-    <li><strong>V</strong> - Validate: Match task to your brain’s current state</li>
-    <li><strong>I</strong> - Install: Build an environment that serves your state</li>
-    <li><strong>B</strong> - Build: Create tools (AI, prompts, routines) that sync with your energy</li>
-    <li><strong>E</strong> - Engage: Rituals that flip you into flow mode on demand</li>
-  </ul>
-
-  <div class="security-box">
-    <h3>⚠️ Caution: Secure Coding is Essential</h3>
-    <p>To responsibly apply VIBE coding, follow these security guidelines:</p>
-    <ul>
-      <li>✅ Use structured, pre-approved AI prompts</li>
-      <li>❌ Never include sensitive info in AI prompts</li>
-      <li>🧠 Always manually review AI-generated code</li>
-      <li>🔒 Use static analysis tools (Bandit, ESLint) before commits</li>
-      <li>🔍 Verify external libraries and packages</li>
-    </ul>
-    <p>Ensure traceability with logs, restrict high-risk code, and regularly audit your codebase.</p>
+  <div class="custom-cursor" id="cursor"></div>
+  <style>
+    .hero-header {
+      background: linear-gradient(135deg, #0a0f4b, #1f8df1);
+      padding: 100px 20px 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+  
+    .hero-header h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      background: linear-gradient(90deg, #00ffe1, #66b3ff, #00ffe1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: floatUpDown 4s ease-in-out infinite;
+      margin: 0;
+    }
+  
+    .hero-header p {
+      font-size: 1.2rem;
+      color: #e0f7ff;
+      margin-top: 20px;
+      animation: floatUpDown 4s ease-in-out infinite;
+    }
+  
+    @keyframes floatUpDown {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+  
+    @keyframes fadeInSoft {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+  
+  <div class="hero-header">
+    <h1>Welcome to the VIBE Coding Movement</h1>
+    <p>Not just a productivity hack — a mindset shift for peak coding flow.</p>
   </div>
-</section>
 
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="learn.html">Learn</a>
+    <a href="practice.html">Practice</a>
+    <a href="evaluation.html">Evaluation</a>
+  </nav>
+
+  <section>
+    <h2 class="section-title">Why Learn VIBE Coding?</h2>
+    <p>Studies show that coding with VIBE principles increases agency, enhances decision-making, and reduces mental fatigue. It's not just about writing code — it's about building the right mental conditions to code effectively.</p>
+
+    <p>Agentic AI and cognitive-aligned programming have shown developers are more likely to reach flow states, solve complex problems faster, and sustain motivation through structured mental habits. VIBE Coding isn’t luxury—it’s leverage.</p>
+
+    <h3>What is VIBE?</h3>
+    <ul>
+      <li><strong>V</strong> - Validate: Match task to your brain’s current state</li>
+      <li><strong>I</strong> - Install: Build an environment that serves your state</li>
+      <li><strong>B</strong> - Build: Create tools (AI, prompts, routines) that sync with your energy</li>
+      <li><strong>E</strong> - Engage: Rituals that flip you into flow mode on demand</li>
+    </ul>
+
+    <div class="security-box">
+      <h3>⚠️ Caution: Secure Coding is Essential</h3>
+      <p>To responsibly apply VIBE coding, follow these security guidelines:</p>
+      <ul>
+        <li>✅ Use structured, pre-approved AI prompts</li>
+        <li>❌ Never include sensitive info in AI prompts</li>
+        <li>🧠 Always manually review AI-generated code</li>
+        <li>🔒 Use static analysis tools (Bandit, ESLint) before commits</li>
+        <li>🔍 Verify external libraries and packages</li>
+      </ul>
+      <p>Ensure traceability with logs, restrict high-risk code, and regularly audit your codebase.</p>
+    </div>
+  </section>
+
+  <script>
+    const cursor = document.getElementById('cursor');
+    let lastMoveTime = 0;
+    const delayBetweenWords = 200; // adjust frequency here (ms)
+    let resetTimeout;
+  
+    document.addEventListener('mousemove', e => {
+      // Update cursor
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+  
+      const now = Date.now();
+      if (now - lastMoveTime >= delayBetweenWords) {
+        lastMoveTime = now;
+  
+        const word = document.createElement('div');
+        word.classList.add('sparkle-text');
+        word.innerText = 'VIBE';
+        word.style.left = `${e.clientX}px`;
+        word.style.top = `${e.clientY}px`;
+        document.body.appendChild(word);
+        setTimeout(() => word.remove(), 1000);
+      }
+    });
+  </script>
+  
+  
 </body>
 </html>

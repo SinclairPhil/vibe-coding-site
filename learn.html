@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Learn VIBE Coding</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
@@ -13,18 +13,65 @@
       color: #e0f7ff;
       margin: 0;
       padding: 0;
+      cursor: none;
     }
 
-    header {
+    .custom-cursor {
+      position: fixed;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,255,255,0.8) 0%, rgba(0,191,255,0.2) 60%, rgba(0,0,0,0) 100%);
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: transform 0.1s ease-out;
+    }
+
+    .sparkle-text {
+      position: fixed;
+      font-size: 14px;
+      font-weight: bold;
+      font-family: 'Inter', sans-serif;
+      color: #00ffff;
+      pointer-events: none;
+      z-index: 9998;
+      animation: textFade 1s ease-out forwards;
+    }
+
+    @keyframes textFade {
+      0% { opacity: 1; transform: translateY(0); }
+      100% { opacity: 0; transform: translateY(-10px); }
+    }
+
+    .hero-header {
       background: linear-gradient(135deg, #0a0f4b, #1f8df1);
-      color: white;
-      padding: 60px 20px;
+      padding: 100px 20px 80px;
       text-align: center;
+      position: relative;
+      overflow: hidden;
     }
 
-    header h1 {
-      font-size: 3em;
+    .hero-header h1 {
+      font-size: 3.5rem;
       font-weight: 800;
+      background: linear-gradient(90deg, #00ffe1, #66b3ff, #00ffe1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: floatUpDown 4s ease-in-out infinite;
+      margin: 0;
+    }
+
+    .hero-header p {
+      font-size: 1.2rem;
+      color: #e0f7ff;
+      margin-top: 20px;
+      animation: floatUpDown 4s ease-in-out infinite;
+    }
+
+    @keyframes floatUpDown {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
     }
 
     nav {
@@ -62,7 +109,14 @@
       border-left: 6px solid #00b4ff;
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(0, 191, 255, 0.2);
+      transition: all 0.3s ease;
     }
+
+    .pillar:hover {
+      box-shadow: 0 0 20px rgb(56, 205, 255);
+      transform: scale(1.03);
+    }
+
 
     pre {
       background-color: #0d1a32;
@@ -78,7 +132,15 @@
       border-left: 6px solid #00ffcc;
       border-radius: 8px;
       margin-bottom: 40px;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px rgba(0, 255, 204, 0.2);
     }
+
+    .quiz-box:hover {
+      box-shadow: 0 0 20px rgba(0, 255, 204, 0.6);
+      transform: scale(1.03);
+    }
+
 
     .quiz-box h3 {
       color: #00ffc8;
@@ -106,10 +168,12 @@
   </style>
 </head>
 <body>
-  <header>
+  <div class="custom-cursor" id="cursor"></div>
+
+  <div class="hero-header">
     <h1>How to Get into VIBE Coding</h1>
     <p>Activate your peak programming potential through engineered mental states.</p>
-  </header>
+  </div>
 
   <nav>
     <a href="index.html">Home</a>
@@ -212,6 +276,26 @@ function setVibeMode(mode) {
       };
       document.getElementById('quizResult').innerText = result[top];
     }
+
+    // Cursor + sparkle
+    const cursor = document.getElementById('cursor');
+    let lastMoveTime = 0;
+    const delayBetweenWords = 200;
+    document.addEventListener('mousemove', e => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+      const now = Date.now();
+      if (now - lastMoveTime >= delayBetweenWords) {
+        lastMoveTime = now;
+        const word = document.createElement('div');
+        word.classList.add('sparkle-text');
+        word.innerText = 'VIBE';
+        word.style.left = `${e.clientX}px`;
+        word.style.top = `${e.clientY}px`;
+        document.body.appendChild(word);
+        setTimeout(() => word.remove(), 1000);
+      }
+    });
   </script>
 </body>
 </html>
