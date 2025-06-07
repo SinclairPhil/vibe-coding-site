@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learn VIBE Coding</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #000814;
+      color: #e0f7ff;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0a0f4b, #1f8df1);
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 3em;
+      font-weight: 800;
+    }
+
+    nav {
+      background: #021f4e;
+      display: flex;
+      justify-content: center;
+      padding: 15px;
+    }
+
+    nav a {
+      color: #d0e8ff;
+      margin: 0 20px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      color: #66b3ff;
+    }
+
+    section {
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h2, h3 {
+      color: #66b3ff;
+    }
+
+    .pillar {
+      background: #01152d;
+      margin-bottom: 40px;
+      padding: 20px;
+      border-left: 6px solid #00b4ff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 191, 255, 0.2);
+    }
+
+    pre {
+      background-color: #0d1a32;
+      color: #00ffff;
+      padding: 10px;
+      overflow-x: auto;
+      border-radius: 5px;
+    }
+
+    .quiz-box {
+      background: #01152d;
+      padding: 20px;
+      border-left: 6px solid #00ffcc;
+      border-radius: 8px;
+      margin-bottom: 40px;
+    }
+
+    .quiz-box h3 {
+      color: #00ffc8;
+    }
+
+    .quiz-box label {
+      display: block;
+      margin: 10px 0;
+    }
+
+    .quiz-box button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #00b4ff;
+      border: none;
+      color: white;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .quiz-box button:hover {
+      background-color: #008ecc;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>How to Get into VIBE Coding</h1>
+    <p>Activate your peak programming potential through engineered mental states.</p>
+  </header>
+
+  <nav>
+    <a href="home.html">Home</a>
+    <a href="learn.html">Learn</a>
+    <a href="practice.html">Practice</a>
+    <a href="evaluation.html">Evaluation</a>
+  </nav>
+
+  <section>
+    <div class="quiz-box">
+      <h3>🧠 What's Your Default Coding State?</h3>
+      <form id="vibeQuiz">
+        <label>1. When coding, you prefer:
+          <select name="q1">
+            <option value="focus">Total silence and deep work</option>
+            <option value="creative">Scribbling on paper and throwing ideas</option>
+            <option value="collab">Chatting and rubber-ducking with others</option>
+          </select>
+        </label>
+        <label>2. Your favorite tool is:
+          <select name="q2">
+            <option value="focus">Timer or distraction blocker</option>
+            <option value="creative">Whiteboard or mind map</option>
+            <option value="collab">Live code editor / video call</option>
+          </select>
+        </label>
+        <label>3. You feel most productive:
+          <select name="q3">
+            <option value="focus">When working alone in flow</option>
+            <option value="creative">When bouncing between ideas</option>
+            <option value="collab">When pair programming</option>
+          </select>
+        </label>
+        <button type="button" onclick="calculateProfile()">Find My VIBE State</button>
+      </form>
+      <p id="quizResult" style="margin-top: 20px; font-weight: bold;"></p>
+    </div>
+
+    <h2>VIBE Framework: Optimize Your State</h2>
+
+    <div class="pillar">
+      <h3>V = Validate: Match Tasks to Mental States</h3>
+      <p>Debugging? → Use Laser Focus mode. Brainstorming? → Shift to Creative Flow.</p>
+    </div>
+
+    <div class="pillar">
+      <h3>I = Install: Design Your Coding Environment</h3>
+      <ul>
+        <li>🧠 Noise-cancelling headphones</li>
+        <li>🔵 Blue light filter for alertness</li>
+        <li>🎵 Brain.fm or ambient synthwave</li>
+        <li>🌡️ Comfortable temperature</li>
+      </ul>
+      <pre><code>// Booting Up Focus Mode...
+function setVibeMode(mode) {
+  switch(mode) {
+    case 'focus':
+      console.log('🧘 Initializing calm brain protocol...');
+      activateNoiseCancellation();
+      setBlueLightFilter();
+      startPomodoroTimer();
+      break;
+    case 'creative':
+      launchWhiteboardTool();
+      playAmbientBeats();
+  }
+}</code></pre>
+    </div>
+
+    <div class="pillar">
+      <h3>B = Build: Create Context-Aware Tools</h3>
+      <pre><code>[STATE]: Focus
+[TASK]: Debugging
+[CONTEXT]: Post-lunch slump
+[OUTPUT]: Fixed code only, no explanation</code></pre>
+    </div>
+
+    <div class="pillar">
+      <h3>E = Engage: Rituals That Flip You Into Flow</h3>
+      <ul>
+        <li>🎧 Headphones on</li>
+        <li>💧 Drink water</li>
+        <li>🧍‍♂️ Stretch</li>
+        <li>🎯 Say “Code Time” aloud</li>
+      </ul>
+    </div>
+  </section>
+
+  <script>
+    function calculateProfile() {
+      const form = document.getElementById('vibeQuiz');
+      const values = [form.q1.value, form.q2.value, form.q3.value];
+      const counts = { focus: 0, creative: 0, collab: 0 };
+      values.forEach(v => counts[v]++);
+      let top = Object.keys(counts).reduce((a, b) => counts[a] > counts[b] ? a : b);
+      let result = {
+        focus: "🧠 You're a Laser-Focus Coder — master of deep work.",
+        creative: "🌪️ You're a Divergent Thinker — born to ideate and invent.",
+        collab: "🤝 You're a Flow Collaborator — best in sync with others."
+      };
+      document.getElementById('quizResult').innerText = result[top];
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VIBE Practice Arena</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #000814;
+      color: #ffffff;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0a0f4b, #1f8df1);
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 3em;
+      font-weight: 800;
+      margin: 0;
+    }
+
+    nav {
+      background: #021f4e;
+      display: flex;
+      justify-content: center;
+      padding: 15px 0;
+    }
+
+    nav a {
+      color: #d0e8ff;
+      margin: 0 20px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      color: #66b3ff;
+    }
+
+    section {
+      padding: 60px 20px;
+      max-width: 960px;
+      margin: auto;
+    }
+
+    h2 {
+      color: #66b3ff;
+      font-size: 2.2em;
+      margin-bottom: 20px;
+    }
+
+    .problem-box {
+      background: #01152d;
+      padding: 20px;
+      border-left: 6px solid #00b4ff;
+      border-radius: 10px;
+      margin-bottom: 40px;
+      box-shadow: 0 0 10px rgba(0, 191, 255, 0.15);
+    }
+
+    .problem-box h3 {
+      color: #00eaff;
+      margin-top: 0;
+    }
+
+    .vibe-requirements {
+      font-style: italic;
+      color: #cccccc;
+    }
+
+    pre {
+      background-color: #001c38;
+      color: #00ffff;
+      padding: 12px;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>VIBE Practice Arena</h1>
+    <p>Apply VIBE principles while solving real-world coding challenges with AI support — but not AI autopilot.</p>
+  </header>
+
+  <nav>
+    <a href="home.html">Home</a>
+    <a href="learn.html">Learn</a>
+    <a href="practice.html">Practice</a>
+    <a href="evaluation.html">Evaluation</a>
+  </nav>
+
+  <section>
+    <h2>🧠 Challenge 1: Debugging a Broken Search Function</h2>
+    <div class="problem-box">
+      <h3>Prompt:</h3>
+      <p>You are given a broken JavaScript function that is supposed to search for a word in an array. However, it returns incorrect results. Your task is to fix the function and explain what was wrong.</p>
+
+      <pre><code>// Broken function
+function searchWord(words, target) {
+  for (let i = 0; i <= words.length; i++) {
+    if (words[i] === target) {
+      return i;
+    }
+  }
+  return -1;
+}
+
+// Example usage
+console.log(searchWord(["apple", "banana", "cherry"], "banana"));</code></pre>
+
+      <p class="vibe-requirements">🎯 VIBE Focus: Install Pomodoro timer + Engage Ritual + Use AI to help find the bug and explain the fix. Avoid copy-pasting the full solution from AI — think through the error.</p>
+    </div>
+
+    <h2>💡 Challenge 2: API Structure Reimagined</h2>
+    <div class="problem-box">
+      <h3>Prompt:</h3>
+      <p>You're designing an API to fetch and manipulate user data (create, read, update, delete). Most developers use REST. Your task: come up with 3 unconventional structures for doing this (hint: graph-based? event-driven?).</p>
+
+      <p class="vibe-requirements">🧠 VIBE Focus: Validate task needs Creative Mode + Build 3 unique AI prompt templates + Engage with ambient music and drawing pad if available.</p>
+    </div>
+
+    <h2>👥 Challenge 3: Refactor Legacy Code with AI Pair</h2>
+    <div class="problem-box">
+      <h3>Prompt:</h3>
+      <p>Below is a verbose, repetitive Python function. Refactor it into something cleaner. You are allowed to ask AI for ideas, but your final code must be 100% human-reviewed.</p>
+
+      <pre><code>def calculate_price(tier, quantity):
+  if tier == 'basic':
+    return quantity * 5
+  elif tier == 'standard':
+    return quantity * 10
+  elif tier == 'premium':
+    return quantity * 20
+  else:
+    return 0</code></pre>
+
+      <p class="vibe-requirements">🤝 VIBE Focus: Engage ritual → Use stretch + water + calm playlist. Try co-writing with AI, asking for 3 styles (ternary, dict map, functional).</p>
+    </div>
+
+    <p class="vibe-requirements">💡 Tip: Don't ask AI to do it all. Ask it to nudge you toward better structure, spot bugs, or inspire ideas — VIBE coding is collaboration, not delegation.</p>
+  </section>
+</body>
+</html>
